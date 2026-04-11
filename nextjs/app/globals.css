@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+/* ── Tailwind v4 theme tokens ── */
+@theme {
+  --color-navy: #0A1240;
+  --color-navy-light: #1a2460;
+  --color-blue: #2563EB;
+  --color-blue-light: #3B82F6;
+  --color-sky: #EFF6FF;
+  --color-gray-muted: #6B7280;
+  --color-light: #F9FAFB;
+
+  --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+/* ── CSS custom properties (for raw CSS usage) ── */
+:root {
+  --navy: #0A1240;
+  --navy-light: #1a2460;
+  --blue: #2563EB;
+  --blue-light: #3B82F6;
+  --sky: #EFF6FF;
+  --gray: #6B7280;
+}
+
+/* ── Base reset ── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--navy);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "liga" 1, "pnum" 1;
+}
+
+/* ── Hero mesh gradient ── */
+.hero-mesh {
+  background-color: #0A1240;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(10, 18, 64, 0.9) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 80% at 80% 20%, rgba(30, 58, 138, 0.7) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 70% at 50% 80%, rgba(37, 99, 235, 0.5) 0%, transparent 70%);
+  background-size: 200% 200%;
+  animation: mesh-move 12s ease-in-out infinite;
+}
+
+@keyframes mesh-move {
+  0%, 100% {
+    background-position: 0% 0%, 100% 0%, 50% 100%;
+  }
+  33% {
+    background-position: 100% 50%, 0% 100%, 0% 0%;
+  }
+  66% {
+    background-position: 50% 100%, 50% 0%, 100% 50%;
+  }
+}
+
+/* ── Shimmer button effect ── */
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: translateX(-100%);
+}
+
+.shimmer-btn:hover::after {
+  animation: shimmer 0.8s ease-in-out;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ── Dot grid pattern (Impatto section) ── */
+.dot-grid {
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.15) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+}
+
+/* ── Focus glow for form inputs ── */
+.input-glow:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
